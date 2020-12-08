@@ -8,7 +8,8 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
- //solution 1 recrusion
+
+ //迭代
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if(l1 == null){
@@ -24,5 +25,30 @@ class Solution {
             l2.next = mergeTwoLists(l1, l2.next);
             return l2;
         }
+    }
+}
+
+//递归
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode node = new ListNode(-1);
+        ListNode head = node;
+        while(l1!=null && l2!=null){
+            if(l1.val<l2.val){
+                node.next = l1;
+                l1 = l1.next;
+                node = node.next;
+            }else{
+                node.next = l2;
+                l2 = l2.next;
+                node = node.next;
+            }
+        }
+        if(l1!=null){
+            node.next = l1;
+        }else{
+            node.next = l2;
+        }
+        return head.next;
     }
 }
