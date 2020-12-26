@@ -17,3 +17,16 @@ class Solution:
                 return False
 
         return True
+#第二种方法        
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        a = str(x)
+        list1 = list(a)
+        if(list1[0] == "-"):
+            return False
+
+        for i in range(len(list1)//2):
+            if(list1.pop(0) != list1.pop()):
+                return False
+
+        return True
